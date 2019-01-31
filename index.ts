@@ -19,7 +19,7 @@ export const smoothScroll = (
 };
 
 // Loop over anchor links
-export const init = () => {
+export const smoothScrollAnchor = () => {
   const anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
   for (var i = 0; i < anchorLinks.length; i++) {
     anchorLinks[i].addEventListener("click", e => {

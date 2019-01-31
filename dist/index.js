@@ -22,7 +22,7 @@ exports.smoothScroll = function (e, element, block) {
     });
 };
 // Loop over anchor links
-exports.init = function () {
+exports.smoothScrollAnchor = function () {
     var anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
     for (var i = 0; i < anchorLinks.length; i++) {
         anchorLinks[i].addEventListener("click", function (e) {

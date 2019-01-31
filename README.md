@@ -8,9 +8,8 @@ Automatically scroll to any given anchor links.
 
 ## Use
 
-    import smoothScrollAnchor from "smooth-scroll-anchor";
-
-    smoothScrollAnchor.init()
+    import { smoothScrollAnchor } from "smooth-scroll-anchor";
+    smoothScrollAnchor();
 
 ## Markup
 
