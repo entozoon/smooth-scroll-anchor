@@ -1,6 +1,6 @@
 {
   "name": "smooth-scroll-anchor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Smooth scroll to anchor links",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/entozoon/smooth-scroll-anchor/issues"
   },
-  "homepage": "https://github.com/entozoon/smooth-scroll-anchor#readme"
+  "homepage": "https://github.com/entozoon/smooth-scroll-anchor#readme",
+  "dependencies": {
+    "smoothscroll-polyfill": "^0.4.3"
+  }
 }
