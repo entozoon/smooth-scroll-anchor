@@ -11,7 +11,6 @@ export const smoothScroll = (
 ) => {
   e.preventDefault();
   // Native modern functionality with IE11 support in a basic way, via polyfill
-  console.log(block);
   element.scrollIntoView({
     behavior: "smooth",
     block

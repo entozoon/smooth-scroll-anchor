@@ -15,7 +15,6 @@ exports.smoothScroll = function (e, element, block) {
     if (block === void 0) { block = "center"; }
     e.preventDefault();
     // Native modern functionality with IE11 support in a basic way, via polyfill
-    console.log(block);
     element.scrollIntoView({
         behavior: "smooth",
         block: block
