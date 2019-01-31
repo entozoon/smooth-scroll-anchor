@@ -1,0 +1,23 @@
+{
+  "name": "smooth-scroll-anchor",
+  "version": "1.0.0",
+  "description": "Smooth scroll to anchor links",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entozoon/smooth-scroll-anchor.git"
+  },
+  "keywords": [
+    "smooth",
+    "scroll"
+  ],
+  "author": "michaelcook.tech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/entozoon/smooth-scroll-anchor/issues"
+  },
+  "homepage": "https://github.com/entozoon/smooth-scroll-anchor#readme"
+}
