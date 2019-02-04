@@ -24,9 +24,10 @@ exports.smoothScroll = function (e, element, block) {
 exports.smoothScrollAnchor = function () {
     var anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
     for (var i = 0; i < anchorLinks.length; i++) {
+        var anchorLink = anchorLinks[i];
         anchorLinks[i].addEventListener("click", function (e) {
             // Grab the href and thence the targetted element
-            var targetSelector = e.target.getAttribute("href") || "", target = document.querySelector(targetSelector);
+            var targetSelector = anchorLink.getAttribute("href") || "", target = document.querySelector(targetSelector);
             if (target) {
                 exports.smoothScroll(e, target);
             }

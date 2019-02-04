@@ -21,9 +21,10 @@ export const smoothScroll = (
 export const smoothScrollAnchor = () => {
   const anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
   for (var i = 0; i < anchorLinks.length; i++) {
+    var anchorLink = <HTMLElement>anchorLinks[i];
     anchorLinks[i].addEventListener("click", e => {
       // Grab the href and thence the targetted element
-      const targetSelector = (<HTMLElement>e.target).getAttribute("href") || "",
+      const targetSelector = anchorLink.getAttribute("href") || "",
         target = document.querySelector(targetSelector);
       if (target) {
         smoothScroll(e, target);
