@@ -11,26 +11,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var smoothscroll = __importStar(require("smoothscroll-polyfill"));
 // const smoothscroll = require("smoothscroll-polyfill");
 smoothscroll.polyfill();
-exports.smoothScroll = function (e, element, block) {
+exports.smoothScroll = function (element, block) {
     if (block === void 0) { block = "center"; }
-    e.preventDefault();
     // Native modern functionality with IE11 support in a basic way, via polyfill
     element.scrollIntoView({
         behavior: "smooth",
         block: block
     });
 };
+var anchorClick = function (anchorLink, e) {
+    e.preventDefault();
+    // Grab the href and thence the targetted element
+    var targetSelector = anchorLink.getAttribute("href") || "", target = document.querySelector(targetSelector);
+    if (target) {
+        exports.smoothScroll(e, target);
+    }
+};
 // Loop over anchor links
 exports.smoothScrollAnchor = function () {
     var anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
     for (var i = 0; i < anchorLinks.length; i++) {
         var anchorLink = anchorLinks[i];
-        anchorLinks[i].addEventListener("click", function (e) {
-            // Grab the href and thence the targetted element
-            var targetSelector = anchorLink.getAttribute("href") || "", target = document.querySelector(targetSelector);
-            if (target) {
-                exports.smoothScroll(e, target);
-            }
-        });
+        anchorLinks[i].addEventListener("click", anchorClick.bind(null, anchorLink));
     }
 };

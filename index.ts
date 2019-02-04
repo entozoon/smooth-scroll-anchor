@@ -4,12 +4,7 @@ import * as smoothscroll from "smoothscroll-polyfill";
 smoothscroll.polyfill();
 
 type Block = "start" | "center" | "end" | "nearest";
-export const smoothScroll = (
-  e: Event,
-  element: Element,
-  block: Block = "center"
-) => {
-  e.preventDefault();
+export const smoothScroll = (element: Element, block: Block = "center") => {
   // Native modern functionality with IE11 support in a basic way, via polyfill
   element.scrollIntoView({
     behavior: "smooth",
@@ -17,18 +12,24 @@ export const smoothScroll = (
   });
 };
 
+const anchorClick = (anchorLink: HTMLElement, e: Event) => {
+  e.preventDefault();
+  // Grab the href and thence the targetted element
+  var targetSelector = anchorLink.getAttribute("href") || "",
+    target = document.querySelector(targetSelector);
+  if (target) {
+    exports.smoothScroll(e, target);
+  }
+};
+
 // Loop over anchor links
 export const smoothScrollAnchor = () => {
   const anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
   for (var i = 0; i < anchorLinks.length; i++) {
     var anchorLink = <HTMLElement>anchorLinks[i];
-    anchorLinks[i].addEventListener("click", e => {
-      // Grab the href and thence the targetted element
-      const targetSelector = anchorLink.getAttribute("href") || "",
-        target = document.querySelector(targetSelector);
-      if (target) {
-        smoothScroll(e, target);
-      }
-    });
+    anchorLinks[i].addEventListener(
+      "click",
+      anchorClick.bind(null, anchorLink)
+    );
   }
 };
