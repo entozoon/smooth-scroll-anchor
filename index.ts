@@ -18,7 +18,7 @@ const anchorClick = (anchorLink: HTMLElement, e: Event) => {
   var targetSelector = anchorLink.getAttribute("href") || "",
     target = document.querySelector(targetSelector);
   if (target) {
-    exports.smoothScroll(e, target);
+    exports.smoothScroll(target);
   }
 };
 

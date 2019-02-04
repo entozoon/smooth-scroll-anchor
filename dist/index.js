@@ -24,7 +24,7 @@ var anchorClick = function (anchorLink, e) {
     // Grab the href and thence the targetted element
     var targetSelector = anchorLink.getAttribute("href") || "", target = document.querySelector(targetSelector);
     if (target) {
-        exports.smoothScroll(e, target);
+        exports.smoothScroll(target);
     }
 };
 // Loop over anchor links
