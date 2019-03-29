@@ -25,6 +25,8 @@ var anchorClick = function (anchorLink, e) {
     var targetSelector = anchorLink.getAttribute("href") || "", target = document.querySelector(targetSelector);
     if (target) {
         exports.smoothScroll(target);
+        // Pop it in the current URL anyway, so it can be used on subsequent page load
+        location.hash = targetSelector.replace("#", "");
     }
 };
 // Loop over anchor links
