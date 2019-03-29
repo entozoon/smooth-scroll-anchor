@@ -19,8 +19,8 @@ const anchorClick = (anchorLink: HTMLElement, e: Event) => {
     target = document.querySelector(targetSelector);
   if (target) {
     exports.smoothScroll(target);
-    // Pop it in the current URL anyway, so it can be used on subsequent page load
-    location.hash = targetSelector.replace("#", "");
+    // Pop it in the current URL anyway, so it can be used on subsequent page load (but using history so it doesn't try to scroll)
+    history.pushState({}, "", `#${targetSelector.replace("#", "")}`);
   }
 };
 
