@@ -43,11 +43,15 @@ const anchorClickGen = (options: any) => {
 };
 
 // Loop over anchor links
-export const smoothScrollAnchor = (
-  { behaviour = "smooth" }: { behaviour?: Behaviour },
-  { block = "center" }: { block?: Block },
-  { offset = 0 }: { offset?: number }
-) => {
+export const smoothScrollAnchor = ({
+  behaviour = "smooth",
+  block = "center",
+  offset = 0
+}: {
+  behaviour?: Behaviour;
+  block?: Block;
+  offset?: number;
+}) => {
   const anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
   for (var i = 0; i < anchorLinks.length; i++) {
     var anchorLink = <HTMLElement>anchorLinks[i];

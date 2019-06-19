@@ -45,10 +45,8 @@ var anchorClickGen = function (options) {
     };
 };
 // Loop over anchor links
-exports.smoothScrollAnchor = function (_a, _b, _c) {
-    var _d = _a.behaviour, behaviour = _d === void 0 ? "smooth" : _d;
-    var _e = _b.block, block = _e === void 0 ? "center" : _e;
-    var _f = _c.offset, offset = _f === void 0 ? 0 : _f;
+exports.smoothScrollAnchor = function (_a) {
+    var _b = _a.behaviour, behaviour = _b === void 0 ? "smooth" : _b, _c = _a.block, block = _c === void 0 ? "center" : _c, _d = _a.offset, offset = _d === void 0 ? 0 : _d;
     var anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
     for (var i = 0; i < anchorLinks.length; i++) {
         var anchorLink = anchorLinks[i];

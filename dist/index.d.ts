@@ -1,8 +1,6 @@
 export declare const smoothScroll: (element: HTMLElement, options: any) => void;
-export declare const smoothScrollAnchor: ({ behaviour }: {
+export declare const smoothScrollAnchor: ({ behaviour, block, offset }: {
     behaviour?: "smooth" | "auto" | undefined;
-}, { block }: {
     block?: "start" | "center" | "end" | "nearest" | undefined;
-}, { offset }: {
     offset?: number | undefined;
 }) => void;
