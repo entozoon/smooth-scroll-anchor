@@ -1,4 +1,5 @@
-declare type Block = "start" | "center" | "end" | "nearest";
-export declare const smoothScroll: (element: Element, block?: Block) => void;
-export declare const smoothScrollAnchor: () => void;
-export {};
+export declare const smoothScroll: (element: Element, options: any) => void;
+export declare const smoothScrollAnchor: ({ behaviour, block }: {
+    behaviour?: string | undefined;
+    block?: string | undefined;
+}) => void;
