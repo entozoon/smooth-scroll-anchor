@@ -13,10 +13,24 @@ var smoothscroll = __importStar(require("smoothscroll-polyfill"));
 smoothscroll.polyfill();
 exports.smoothScroll = function (element, options) {
     // Native modern functionality with IE11 support in a basic way, via polyfill
-    element.scrollIntoView({
-        behavior: options.behaviour,
-        block: options.block
-    });
+    if (options.offset) {
+        // If given an offset, re-position the target element for a split second while triggering scroll
+        var position = element.style.position, top_1 = element.style.top;
+        element.style.position = "relative";
+        element.style.top = "-" + options.offset + "px";
+        element.scrollIntoView({
+            behavior: options.behaviour,
+            block: options.block
+        });
+        element.style.position = position;
+        element.style.top = top_1;
+    }
+    else {
+        element.scrollIntoView({
+            behavior: options.behaviour,
+            block: options.block
+        });
+    }
 };
 var anchorClickGen = function (options) {
     return function (anchorLink, e) {
@@ -31,11 +45,13 @@ var anchorClickGen = function (options) {
     };
 };
 // Loop over anchor links
-exports.smoothScrollAnchor = function (_a) {
-    var _b = _a.behaviour, behaviour = _b === void 0 ? "smooth" : _b, _c = _a.block, block = _c === void 0 ? "center" : _c;
+exports.smoothScrollAnchor = function (_a, _b, _c) {
+    var _d = _a.behaviour, behaviour = _d === void 0 ? "smooth" : _d;
+    var _e = _b.block, block = _e === void 0 ? "center" : _e;
+    var _f = _c.offset, offset = _f === void 0 ? 0 : _f;
     var anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
     for (var i = 0; i < anchorLinks.length; i++) {
         var anchorLink = anchorLinks[i];
-        anchorLinks[i].addEventListener("click", anchorClickGen({ block: block }).bind(null, anchorLink));
+        anchorLinks[i].addEventListener("click", anchorClickGen({ behaviour: behaviour, block: block, offset: offset }).bind(null, anchorLink));
     }
 };

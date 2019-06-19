@@ -3,14 +3,29 @@ import * as smoothscroll from "smoothscroll-polyfill";
 // const smoothscroll = require("smoothscroll-polyfill");
 smoothscroll.polyfill();
 
+type Behaviour = "smooth" | "auto";
 type Block = "start" | "center" | "end" | "nearest";
 
-export const smoothScroll = (element: Element, options: any) => {
+export const smoothScroll = (element: HTMLElement, options: any) => {
   // Native modern functionality with IE11 support in a basic way, via polyfill
-  element.scrollIntoView({
-    behavior: options.behaviour,
-    block: options.block
-  });
+  if (options.offset) {
+    // If given an offset, re-position the target element for a split second while triggering scroll
+    const position = element.style.position,
+      top = element.style.top;
+    element.style.position = "relative";
+    element.style.top = `-${options.offset}px`;
+    element.scrollIntoView({
+      behavior: options.behaviour,
+      block: options.block
+    });
+    element.style.position = position;
+    element.style.top = top;
+  } else {
+    element.scrollIntoView({
+      behavior: options.behaviour,
+      block: options.block
+    });
+  }
 };
 
 const anchorClickGen = (options: any) => {
@@ -28,16 +43,17 @@ const anchorClickGen = (options: any) => {
 };
 
 // Loop over anchor links
-export const smoothScrollAnchor = ({
-  behaviour = "smooth",
-  block = "center"
-}) => {
+export const smoothScrollAnchor = (
+  { behaviour = "smooth" }: { behaviour?: Behaviour },
+  { block = "center" }: { block?: Block },
+  { offset = 0 }: { offset?: number }
+) => {
   const anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
   for (var i = 0; i < anchorLinks.length; i++) {
     var anchorLink = <HTMLElement>anchorLinks[i];
     anchorLinks[i].addEventListener(
       "click",
-      anchorClickGen({ block }).bind(null, anchorLink)
+      anchorClickGen({ behaviour, block, offset }).bind(null, anchorLink)
     );
   }
 };
