@@ -52,7 +52,7 @@ export const smoothScrollAnchor = ({
   block?: Block;
   offset?: number;
 }) => {
-  const anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"]');
+  const anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"])');
   for (var i = 0; i < anchorLinks.length; i++) {
     var anchorLink = <HTMLElement>anchorLinks[i];
     anchorLinks[i].addEventListener(
