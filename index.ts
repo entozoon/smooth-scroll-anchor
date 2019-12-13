@@ -46,13 +46,15 @@ const anchorClickGen = (options: any) => {
 export const smoothScrollAnchor = ({
   behaviour = "smooth",
   block = "center",
-  offset = 0
+  offset = 0,
+  anchorQuerySelector = '[href^="#"]:not([href="#"])'
 }: {
   behaviour?: Behaviour;
   block?: Block;
   offset?: number;
+  anchorQuerySelector?: string;
 }) => {
-  const anchorLinks = document.querySelectorAll('[href^="#"]:not([href="#"])');
+  const anchorLinks = document.querySelectorAll(anchorQuerySelector);
   for (var i = 0; i < anchorLinks.length; i++) {
     var anchorLink = <HTMLElement>anchorLinks[i];
     anchorLinks[i].addEventListener(
