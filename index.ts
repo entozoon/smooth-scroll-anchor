@@ -6,7 +6,7 @@ smoothscroll.polyfill();
 type Behaviour = "smooth" | "auto";
 type Block = "start" | "center" | "end" | "nearest";
 
-export const smoothScroll = (element: HTMLElement, options: any) => {
+export const smoothScroll = (element: HTMLElement, options: any = {}) => {
   // Native modern functionality with IE11 support in a basic way, via polyfill
   if (options.offset) {
     // If given an offset, re-position the target element for a split second while triggering scroll
@@ -16,14 +16,14 @@ export const smoothScroll = (element: HTMLElement, options: any) => {
     element.style.top = `-${options.offset}px`;
     element.scrollIntoView({
       behavior: options.behaviour,
-      block: options.block
+      block: options.block,
     });
     element.style.position = position;
     element.style.top = top;
   } else {
     element.scrollIntoView({
       behavior: options.behaviour,
-      block: options.block
+      block: options.block,
     });
   }
 };
@@ -47,7 +47,7 @@ export const smoothScrollAnchor = ({
   behaviour = "smooth",
   block = "center",
   offset = 0,
-  anchorQuerySelector = '[href^="#"]:not([href="#"])'
+  anchorQuerySelector = '[href^="#"]:not([href="#"])',
 }: {
   behaviour?: Behaviour;
   block?: Block;

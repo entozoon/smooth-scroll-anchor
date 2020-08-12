@@ -12,6 +12,7 @@ var smoothscroll = __importStar(require("smoothscroll-polyfill"));
 // const smoothscroll = require("smoothscroll-polyfill");
 smoothscroll.polyfill();
 exports.smoothScroll = function (element, options) {
+    if (options === void 0) { options = {}; }
     // Native modern functionality with IE11 support in a basic way, via polyfill
     if (options.offset) {
         // If given an offset, re-position the target element for a split second while triggering scroll
@@ -20,7 +21,7 @@ exports.smoothScroll = function (element, options) {
         element.style.top = "-" + options.offset + "px";
         element.scrollIntoView({
             behavior: options.behaviour,
-            block: options.block
+            block: options.block,
         });
         element.style.position = position;
         element.style.top = top_1;
@@ -28,7 +29,7 @@ exports.smoothScroll = function (element, options) {
     else {
         element.scrollIntoView({
             behavior: options.behaviour,
-            block: options.block
+            block: options.block,
         });
     }
 };
